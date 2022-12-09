@@ -7,7 +7,7 @@ plugins {
 
 ihmc {
    group = "us.ihmc"
-   version = "0.11.0"
+   version = "0.0.1"
    vcsUrl = "https://bitbucket.ihmc.us/projects/LIBS/repos/ihmc-mocap"
    openSource = true
    
