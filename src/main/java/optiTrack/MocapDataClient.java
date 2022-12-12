@@ -1,5 +1,7 @@
 package optiTrack;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.*;
 import java.nio.ByteBuffer;
@@ -249,29 +251,41 @@ public class MocapDataClient
             {
                byte[] buf = new byte[receivingBufferSize];
                DatagramPacket packet = new DatagramPacket(buf, buf.length);
-
                dataSocket.receive(packet);
 
-               MocapFrameDataPacket recvPacket = new MocapFrameDataPacket(buf);
+	            String logFile = System.getProperty("user.home") + File.separator + ".ihmc" + File.separator + "logs" + File.separator + "mocapData.txt";
+	            File file = new File(logFile);
+	            FileWriter fileWriter = new FileWriter(file);
 
-               ArrayList<MocapRigidBody> lisftOfRigidbodies = recvPacket.getRigidBodies();
-               ArrayList<MocapMarkerSet> listOfMarkerSets = recvPacket.getMarkerSets();
-               ArrayList<MocapMarker> listOfLabeledMocapMarkers = recvPacket.getLabeledMarkers();
-               ArrayList<MocapMarker> listOfUnlabeledMocapMarker = recvPacket.getUnLabeledMarkers();
+	            for (int i = 0; i < buf.length; i++)
+	            {
+		            fileWriter.write(buf[i]);
+	            }
 
-               if (firstTime)
-               {
-                  System.out.println("MOCAP: Data was received from MOCAP Server! # Of Rigid bodies detected: " + lisftOfRigidbodies.size());
-                  firstTime = false;
-                  listOfModels = new ArrayList<>();
+	            fileWriter.flush();
+	            fileWriter.close();
+					break;
 
-                  for (MocapRigidBody rb : lisftOfRigidbodies)
-                  {
-                     listOfModels.add("" + rb.getId());
-                  }
-               }
-
-               updateListeners(lisftOfRigidbodies, listOfMarkerSets, listOfLabeledMocapMarkers, listOfUnlabeledMocapMarker);
+//               MocapFrameDataPacket recvPacket = new MocapFrameDataPacket(buf);
+//
+//               ArrayList<MocapRigidBody> lisftOfRigidbodies = recvPacket.getRigidBodies();
+//               ArrayList<MocapMarkerSet> listOfMarkerSets = recvPacket.getMarkerSets();
+//               ArrayList<MocapMarker> listOfLabeledMocapMarkers = recvPacket.getLabeledMarkers();
+//               ArrayList<MocapMarker> listOfUnlabeledMocapMarker = recvPacket.getUnLabeledMarkers();
+//
+//               if (firstTime)
+//               {
+//                  System.out.println("MOCAP: Data was received from MOCAP Server! # Of Rigid bodies detected: " + lisftOfRigidbodies.size());
+//                  firstTime = false;
+//                  listOfModels = new ArrayList<>();
+//
+//                  for (MocapRigidBody rb : lisftOfRigidbodies)
+//                  {
+//                     listOfModels.add("" + rb.getId());
+//                  }
+//               }
+//
+//               updateListeners(lisftOfRigidbodies, listOfMarkerSets, listOfLabeledMocapMarkers, listOfUnlabeledMocapMarker);
             }
             catch (IOException e)
             {
@@ -286,6 +300,8 @@ public class MocapDataClient
 
          dataSocket.close();
          commandSocket.close();
+
+	      System.out.println("Done logging mocap data");
       }
    }
 
