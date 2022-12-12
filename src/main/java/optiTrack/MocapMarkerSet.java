@@ -4,27 +4,26 @@ import java.util.ArrayList;
 
 public class MocapMarkerSet
 {
-	private String dataSetName;
-	private ArrayList<MocapMarker> markers = new ArrayList<MocapMarker>();
+   private String dataSetName;
+   private ArrayList<MocapMarker> markers = new ArrayList<MocapMarker>();
 
-	public MocapMarkerSet(String dataSetName)
-	{
-		this.dataSetName = dataSetName;
-	}
+   public MocapMarkerSet(String dataSetName)
+   {
+      this.dataSetName = dataSetName;
+   }
 
-	public void addMarker(MocapMarker marker)
-	{
-		markers.add(marker);
-	}
+   public void addMarker(MocapMarker marker)
+   {
+      markers.add(marker);
+   }
 
-	public String getDataSetName()
-	{
-		return dataSetName;
-	}
+   public String getDataSetName()
+   {
+      return dataSetName;
+   }
 
-	public ArrayList<MocapMarker> getAssociatedMarkers()
-	{
-		return markers;
-	}
-
+   public ArrayList<MocapMarker> getAssociatedMarkers()
+   {
+      return markers;
+   }
 }

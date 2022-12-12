@@ -1,11 +1,11 @@
 package optiTrack.examples;
 
-import static java.lang.System.out;
-
 import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.util.Collections;
 import java.util.Enumeration;
+
+import static java.lang.System.out;
 
 public class ListNIFs
 {
@@ -15,8 +15,8 @@ public class ListNIFs
 
       for (NetworkInterface netIf : Collections.list(nets))
       {
-         out.printf("Display name: %s\n",netIf.getDisplayName());
-         out.printf("Name: %s\n",netIf.getName());
+         out.printf("Display name: %s\n", netIf.getDisplayName());
+         out.printf("Name: %s\n", netIf.getName());
          displaySubInterfaces(netIf);
          out.printf("\n");
       }
@@ -28,8 +28,8 @@ public class ListNIFs
 
       for (NetworkInterface subIf : Collections.list(subIfs))
       {
-         out.printf("\tSub Interface Display name: %s\n",subIf.getDisplayName());
-         out.printf("\tSub Interface Name: %s\n",subIf.getName());
+         out.printf("\tSub Interface Display name: %s\n", subIf.getDisplayName());
+         out.printf("\tSub Interface Name: %s\n", subIf.getName());
       }
    }
 }

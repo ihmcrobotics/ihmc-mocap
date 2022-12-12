@@ -29,8 +29,7 @@ public class QuaternionPose implements Serializable
       this.qw = 0.0f;
    }
 
-   public QuaternionPose(float xPosition, float yPosiiton, float zPosition, float qx, float qy,
-                         float qz, float qw)
+   public QuaternionPose(float xPosition, float yPosiiton, float zPosition, float qx, float qy, float qz, float qw)
    {
       this.dataValid = true;
       this.xPosition = xPosition;
@@ -78,7 +77,6 @@ public class QuaternionPose implements Serializable
          return false;
 
       return true;
-
    }
 
    public void invalidate()
@@ -88,7 +86,6 @@ public class QuaternionPose implements Serializable
 
    public String toString()
    {
-      return "valid=" + dataValid + "(" + xPosition + ", " + yPosition + ", " + zPosition + ")"
-            + "(" + qx + ", " + qy + ", " + qz + ", " + qw + ")";
+      return "valid=" + dataValid + "(" + xPosition + ", " + yPosition + ", " + zPosition + ")" + "(" + qx + ", " + qy + ", " + qz + ", " + qw + ")";
    }
 }
