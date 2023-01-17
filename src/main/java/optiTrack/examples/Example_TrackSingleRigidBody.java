@@ -9,7 +9,7 @@ import optiTrack.MocapRigidbodiesListener;
 
 public class Example_TrackSingleRigidBody implements MocapRigidbodiesListener
 {
-	private int rigidBodyIdToTrack = 1;
+	private int rigidBodyIdToTrack = 23;
 	private MocapDataClient mocapClient;
 	private DecimalFormat dc = new DecimalFormat("#.00");
 
